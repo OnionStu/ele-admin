@@ -2,7 +2,7 @@
   <el-menu :default-active="defaultIndex" class="navbar" mode="horizontal">
     <hamburger :toggle-click="toggleSideBar" :is-active="sidebar.opened" class="hamburger-container"/>
     <!-- <breadcrumb /> -->
-    <system-bar-item v-for="menu in systems" :key="menu.appId" :item="menu" />
+    <system-menu-item v-for="menu in systems" :key="menu.appId" :item="menu" />
     <el-dropdown class="avatar-container" trigger="click">
       <div class="avatar-wrapper">
         <!-- <img :src="avatar+'?imageView2/1/w/80/h/80'" class="user-avatar"> -->
@@ -26,14 +26,14 @@
 <script>
 import { mapGetters } from 'vuex';
 // import Breadcrumb from '@/components/Breadcrumb';
-import SystemBarItem from './SystemBar/SystemBarItem';
+import SystemMenuItem from './SystemMenu/SystemMenuItem';
 import Hamburger from '@/components/Hamburger';
 
 export default {
   components: {
     // Breadcrumb,
     Hamburger,
-    SystemBarItem
+    SystemMenuItem
   },
   computed: {
     ...mapGetters(['sidebar', 'avatar', 'systems']),

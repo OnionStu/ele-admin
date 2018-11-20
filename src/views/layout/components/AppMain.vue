@@ -11,7 +11,6 @@
 </template>
 
 <script>
-/* eslint-disable */
 export default {
   name: 'AppMain',
   computed: {
@@ -21,8 +20,7 @@ export default {
   }
 };
 </script>
-
-<style  scoped>
+<style lang="scss" scoped>
 .app-main {
   /*50 = navbar  */
   min-height: calc(100vh - 50px);
@@ -34,6 +32,7 @@ export default {
   height: 56px;
   padding: 20px;
   background-color: #fff;
+  font-weight: 600;
 }
 .content-wrapper {
   padding: 20px;

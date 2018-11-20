@@ -1,4 +1,3 @@
-/* eslint-disable */
 import Vue from 'vue';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import * as solidIcons from '@fortawesome/free-solid-svg-icons';

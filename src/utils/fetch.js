@@ -17,13 +17,9 @@ axios.interceptors.request.use(config => config, err => Promise.reject(err));
 axios.interceptors.response.use(
   response => {
     // do sth.
-    // eslint-disable-next-line
-    console.log(response);
     return response;
   },
   error => {
-    // eslint-disable-next-line
-    console.error(error);
     const { response } = error;
     if (response && response.data) {
       if (response.data.message && whiteList.indexOf(response.config.url) === -1) {

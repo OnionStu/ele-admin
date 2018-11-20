@@ -1,5 +1,5 @@
 <template>
-  <el-menu-item :index="item.appId" class="system-bar-item">{{item.appName}}</el-menu-item>
+  <el-menu-item :index="item.appId" class="system-menu-item">{{item.appName}}</el-menu-item>
 </template>
 <script>
 export default {

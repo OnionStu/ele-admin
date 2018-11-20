@@ -35,9 +35,6 @@ export default {
   },
   methods: {
     getBreadcrumb() {
-      // eslint-disable-next-line
-      console.log('paths', this.$route.matched);
-
       let matched = this.$route.matched.filter(item => {
         if (item.name) {
           return true;
