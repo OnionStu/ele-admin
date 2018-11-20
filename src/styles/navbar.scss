@@ -10,10 +10,21 @@
       text-align: center;
       flex-grow: 1;
     }
-
     .system-menu-item {
       opacity: 0.6;
-      border-bottom: 2px solid transparent;
+      span {
+        position: relative;
+        &:after {
+          content: ' ';
+          position: absolute;
+          background-color: transparent;
+          left: 0;
+          right: 0;
+          bottom: -0.5em;
+          height: 2px;
+          transition: background-color 0.3s;
+        }
+      }
       &.is-active,
       &:focus,
       &:hover {
@@ -21,7 +32,11 @@
         opacity: 1;
       }
       &.is-active {
-        border-bottom-color: teal;
+        color: #303133;
+        // border-bottom-color: teal;
+        span:after {
+          background-color: #ccc;
+        }
       }
     }
     .system-submenu {
@@ -64,8 +79,25 @@
   .tools {
     padding-right: 35px;
     margin-left: 20px;
+    position: relative;
     &:before {
       content: ' ';
+      display: block;
+      width: 1px;
+      height: 30px;
+      position: absolute;
+      background: #ccc;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .action-tool {
+      display: inline-block;
+      line-height: 50px;
+      height: 50px;
+      width: 30px;
+      text-align: center;
+      vertical-align: text-bottom;
     }
   }
   .avatar-container {

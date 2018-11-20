@@ -1,5 +1,5 @@
 <template>
-  <el-menu :default-active="defaultIndex" class="navbar" mode="horizontal">
+  <el-menu :default-active="defaultIndex" class="navbar" mode="horizontal" @select="handleSelect">
     <hamburger :toggle-click="toggleSideBar" :is-active="sidebar.opened" class="hamburger-container"/>
     <!-- <breadcrumb /> -->
      <div class="system-menus">
@@ -15,6 +15,8 @@
       </el-submenu>
     </div>
     <div class="tools">
+      <app-setting class="action-tool"/>
+      <notification class="action-tool" />
       <el-dropdown class="avatar-container" trigger="click">
         <div class="avatar-wrapper">
           <img src="@/assets/avatar.png" class="user-avatar">
@@ -39,6 +41,8 @@
 import { mapGetters } from 'vuex';
 // import Breadcrumb from '@/components/Breadcrumb';
 import SystemMenuItem from './SystemMenu/SystemMenuItem';
+import Notification from './Notification';
+import AppSetting from './Setting';
 import Hamburger from '@/components/Hamburger';
 
 const MAX_LENGTH = 6;
@@ -47,7 +51,9 @@ export default {
   components: {
     // Breadcrumb,
     Hamburger,
-    SystemMenuItem
+    SystemMenuItem,
+    AppSetting,
+    Notification
   },
   computed: {
     ...mapGetters(['sidebar', 'avatar', 'systems']),
@@ -73,6 +79,10 @@ export default {
       this.$store.dispatch('LogOut').then(() => {
         location.reload(); // 为了重新实例化vue-router对象 避免bug
       });
+    },
+    handleSelect(key, keyPath) {
+      // eslint-disable-next-line
+      console.log('handleSelect', key, keyPath);
     }
   }
 };
