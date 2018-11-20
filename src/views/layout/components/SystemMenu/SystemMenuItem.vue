@@ -1,5 +1,7 @@
 <template>
-  <el-menu-item :index="item.appId" class="system-menu-item">{{item.appName}}</el-menu-item>
+  <el-menu-item :index="item.appId" class="system-menu-item">
+    <span>{{item.appName}}</span>
+  </el-menu-item>
 </template>
 <script>
 export default {

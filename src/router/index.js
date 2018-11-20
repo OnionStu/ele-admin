@@ -57,16 +57,26 @@ export const constantRouterMap = [
     meta: { title: '一级目录', icon: 'bars' },
     children: [
       {
-        path: 'page1',
+        path: '1',
         name: 'Page1',
+        // hidden: true,
         component: () => import('@/views/example/page1'),
         meta: { title: '二级菜单1', icon: 'table' }
       },
       {
-        path: 'page2',
+        path: '2',
         name: 'Page2',
         component: () => import('@/views/example/page2'),
-        meta: { title: '二级菜单2', icon: 'tree' }
+        alwaysShow: true,
+        meta: { title: '二级菜单2', icon: 'tree' },
+        children: [
+          {
+            path: '2-1',
+            name: 'Page2-1',
+            component: () => import('@/views/example/page3'),
+            meta: { title: '二级菜单2-1', icon: 'tree' }
+          }
+        ]
       }
     ]
   },
