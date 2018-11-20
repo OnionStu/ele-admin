@@ -2,24 +2,36 @@
   <el-menu :default-active="defaultIndex" class="navbar" mode="horizontal">
     <hamburger :toggle-click="toggleSideBar" :is-active="sidebar.opened" class="hamburger-container"/>
     <!-- <breadcrumb /> -->
-    <system-menu-item v-for="menu in systems" :key="menu.appId" :item="menu" />
-    <el-dropdown class="avatar-container" trigger="click">
-      <div class="avatar-wrapper">
-        <!-- <img :src="avatar+'?imageView2/1/w/80/h/80'" class="user-avatar"> -->
-        <img src="@/assets/avatar.png" class="user-avatar">
-        <i class="el-icon-caret-bottom"/>
-      </div>
-      <el-dropdown-menu slot="dropdown" class="user-dropdown">
-        <router-link class="inlineBlock" to="/">
-          <el-dropdown-item>
-            Home
+     <div class="system-menus">
+      <system-menu-item v-for="menu in menus" :key="menu.appId" :item="menu" />
+      <el-submenu
+        index="more"
+        class="system-submenu"
+        popper-class="system-menu-dropdown"
+        v-if="needMore"
+      >
+        <template slot="title">更多</template>
+        <system-menu-item v-for="menu in otherMenus" :key="menu.appId" :item="menu" />
+      </el-submenu>
+    </div>
+    <div class="tools">
+      <el-dropdown class="avatar-container" trigger="click">
+        <div class="avatar-wrapper">
+          <img src="@/assets/avatar.png" class="user-avatar">
+          <i class="el-icon-caret-bottom"/>
+        </div>
+        <el-dropdown-menu slot="dropdown" class="user-dropdown">
+          <router-link class="inlineBlock" to="/">
+            <el-dropdown-item>
+              Home
+            </el-dropdown-item>
+          </router-link>
+          <el-dropdown-item divided>
+            <span style="display:block;" @click="logout">LogOut</span>
           </el-dropdown-item>
-        </router-link>
-        <el-dropdown-item divided>
-          <span style="display:block;" @click="logout">LogOut</span>
-        </el-dropdown-item>
-      </el-dropdown-menu>
-    </el-dropdown>
+        </el-dropdown-menu>
+      </el-dropdown>
+    </div>
   </el-menu>
 </template>
 
@@ -28,6 +40,8 @@ import { mapGetters } from 'vuex';
 // import Breadcrumb from '@/components/Breadcrumb';
 import SystemMenuItem from './SystemMenu/SystemMenuItem';
 import Hamburger from '@/components/Hamburger';
+
+const MAX_LENGTH = 6;
 
 export default {
   components: {
@@ -38,13 +52,18 @@ export default {
   computed: {
     ...mapGetters(['sidebar', 'avatar', 'systems']),
     defaultIndex() {
-      const [fristSystem] = this.systems;
-      return fristSystem ? fristSystem.appId : null;
+      const [fristMenu] = this.menus;
+      return fristMenu ? fristMenu.appId : null;
+    },
+    needMore() {
+      return this.systems.length > MAX_LENGTH;
+    },
+    menus() {
+      return this.needMore ? this.systems.slice(0, MAX_LENGTH - 1) : this.systems;
+    },
+    otherMenus() {
+      return this.needMore ? this.systems.slice(MAX_LENGTH - 1) : [];
     }
-  },
-  created() {
-    // eslint-disable-next-line
-    console.log('ssss', this);
   },
   methods: {
     toggleSideBar() {
@@ -58,50 +77,3 @@ export default {
   }
 };
 </script>
-
-<style rel="stylesheet/scss" lang="scss" scoped>
-.navbar {
-  height: 50px;
-  line-height: 50px;
-  border-radius: 0px !important;
-  .system-bar-item {
-    height: 50px;
-    line-height: 50px;
-  }
-  .hamburger-container {
-    line-height: 58px;
-    height: 50px;
-    float: left;
-    padding: 0 10px;
-  }
-  .screenfull {
-    position: absolute;
-    right: 90px;
-    top: 16px;
-    color: red;
-  }
-  .avatar-container {
-    height: 50px;
-    display: inline-block;
-    position: absolute;
-    right: 35px;
-    .avatar-wrapper {
-      cursor: pointer;
-      margin-top: 5px;
-      position: relative;
-      line-height: initial;
-      .user-avatar {
-        width: 40px;
-        height: 40px;
-        border-radius: 10px;
-      }
-      .el-icon-caret-bottom {
-        position: absolute;
-        right: -20px;
-        top: 25px;
-        font-size: 12px;
-      }
-    }
-  }
-}
-</style>

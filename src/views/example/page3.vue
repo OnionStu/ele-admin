@@ -1,11 +1,10 @@
 <template>
   <div class="test-content">
-    Test Page 2
-    <router-view/>
+    Test Page 3
   </div>
 </template>
 <script>
 export default {
-  name: 'TsetPageTwo'
+  name: 'TsetPageThree'
 };
 </script>

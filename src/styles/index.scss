@@ -1,15 +1,17 @@
-@import './variables.scss';
-@import './mixin.scss';
-@import './transition.scss';
-@import './element-ui.scss';
-@import './sidebar.scss';
+@import './variables';
+@import './mixin';
+@import './transition';
+@import './element-ui';
+@import './sidebar';
+@import './navbar';
 
 body {
   height: 100%;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
-  font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif;
+  font-family: 'PingFang SC', Helvetica Neue, Helvetica, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif;
+  font-family: Helvetica Neue, Helvetica, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif;
 }
 
 label {
@@ -33,11 +35,11 @@ html {
   &::-webkit-scrollbar-thumb {
     border-radius: 999px;
     // background-color: #e8f4fd;
-    background-color: rgba(0,0,0,.2);
+    background-color: rgba(0, 0, 0, 0.2);
   }
 }
 
-#app{
+#app {
   height: 100%;
 }
 
@@ -56,9 +58,9 @@ a:hover {
   text-decoration: none;
 }
 
-div:focus{
+div:focus {
   outline: none;
- }
+}
 
 a:focus,
 a:active {
@@ -78,15 +80,15 @@ a:hover {
     visibility: hidden;
     display: block;
     font-size: 0;
-    content: " ";
+    content: ' ';
     clear: both;
     height: 0;
   }
 }
 
 //main-container全局样式
-.app-main{
-  min-height: 100%
+.app-main {
+  min-height: 100%;
 }
 
 .app-container {
