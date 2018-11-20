@@ -1,6 +1,15 @@
 <template>
   <div v-if="!item.hidden&&item.children" class="menu-wrapper">
 
+    <!--
+      如果 当前菜单 下 只有一个可以显示的 子菜单
+          而且 唯一的 子菜单
+            或是没有 下级子菜单
+            或是 当前菜单 没有 可以显示的 子菜单
+          的情况下 再加上
+          当前菜单 不是 一直要展示的话
+        就 渲染 这个 onlyOneChild 出来
+    -->
     <template v-if="hasOneShowingChild(item.children,item) && (!onlyOneChild.children||onlyOneChild.noShowingChildren)&&!item.alwaysShow">
       <app-link :to="resolvePath(onlyOneChild.path)">
         <el-menu-item :index="resolvePath(onlyOneChild.path)" :class="{'submenu-title-noDropdown':!isNest}">
@@ -35,7 +44,6 @@
 
 <script>
 import path from 'path';
-// import { isExternal } from '../../../../utils';
 import { isExternal } from '@/utils';
 import Item from './Item';
 import AppLink from './Link';
