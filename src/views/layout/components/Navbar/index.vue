@@ -40,7 +40,7 @@
 <script>
 import { mapGetters } from 'vuex';
 // import Breadcrumb from '@/components/Breadcrumb';
-import SystemMenuItem from './SystemMenu/SystemMenuItem';
+import SystemMenuItem from '../SystemMenu/SystemMenuItem';
 import Notification from './Notification';
 import AppSetting from './Setting';
 import Hamburger from '@/components/Hamburger';

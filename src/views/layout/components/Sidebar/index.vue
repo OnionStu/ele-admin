@@ -38,3 +38,13 @@ export default {
   }
 };
 </script>
+<style lang="scss" scoped>
+$menuItemHeight: 56px;
+.logo-wrapper {
+  text-align: center;
+  height: $menuItemHeight;
+  line-height: $menuItemHeight;
+  font-size: 14px;
+  color: #fff;
+}
+</style>
