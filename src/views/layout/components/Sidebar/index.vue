@@ -15,6 +15,7 @@
         </li>
       </div> -->
       <app-logo/>
+      <system-logo/>
       <sidebar-item v-for="route in routes" :key="route.path" :item="route" :base-path="route.path"/>
     </el-menu>
   </el-scrollbar>
@@ -23,10 +24,11 @@
 <script>
 import { mapGetters } from 'vuex';
 import SidebarItem from './SidebarItem';
-import AppLogo from '../AppLogo';
+import AppLogo from './AppLogo';
+import SystemLogo from './SystemLogo';
 
 export default {
-  components: { SidebarItem, AppLogo },
+  components: { SidebarItem, AppLogo, SystemLogo },
   computed: {
     ...mapGetters(['sidebar']),
     routes() {
